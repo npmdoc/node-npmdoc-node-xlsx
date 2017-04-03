@@ -1,0 +1,490 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/mgcrea/node-xlsx#readme">node-xlsx (v0.7.4)</a>
+</h1>
+<h4>NodeJS Excel files parser &amp; builder</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-xlsx">module node-xlsx</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-xlsx.build">
+            function <span class="apidocSignatureSpan">node-xlsx.</span>build
+            <span class="apidocSignatureSpan">(worksheets)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-xlsx.parse">
+            function <span class="apidocSignatureSpan">node-xlsx.</span>parse
+            <span class="apidocSignatureSpan">(mixed)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-xlsx.</span>default</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-xlsx.</span>helpers</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-xlsx.</span>workbook</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-xlsx.default">module node-xlsx.default</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-xlsx.default.build">
+            function <span class="apidocSignatureSpan">node-xlsx.default.</span>build
+            <span class="apidocSignatureSpan">(worksheets)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-xlsx.default.parse">
+            function <span class="apidocSignatureSpan">node-xlsx.default.</span>parse
+            <span class="apidocSignatureSpan">(mixed)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-xlsx.helpers">module node-xlsx.helpers</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-xlsx.helpers.buildSheetFromMatrix">
+            function <span class="apidocSignatureSpan">node-xlsx.helpers.</span>buildSheetFromMatrix
+            <span class="apidocSignatureSpan">(data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-xlsx.helpers.isBoolean">
+            function <span class="apidocSignatureSpan">node-xlsx.helpers.</span>isBoolean
+            <span class="apidocSignatureSpan">(maybeBoolean)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-xlsx.helpers.isNumber">
+            function <span class="apidocSignatureSpan">node-xlsx.helpers.</span>isNumber
+            <span class="apidocSignatureSpan">(maybeNumber)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-xlsx.helpers.isString">
+            function <span class="apidocSignatureSpan">node-xlsx.helpers.</span>isString
+            <span class="apidocSignatureSpan">(maybeString)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-xlsx.workbook">module node-xlsx.workbook</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-xlsx.workbook.default">
+            function <span class="apidocSignatureSpan">node-xlsx.workbook.</span>default
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-xlsx" id="apidoc.module.node-xlsx">module node-xlsx</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-xlsx.build" id="apidoc.element.node-xlsx.build">
+        function <span class="apidocSignatureSpan">node-xlsx.</span>build
+        <span class="apidocSignatureSpan">(worksheets)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function build(worksheets) {
+  var options = arguments.length &gt; 1 &amp;&amp; arguments[1] !== undefined ? arguments[1] : {};
+
+  var defaults = {
+    bookType: 'xlsx',
+    bookSST: false,
+    type: 'binary'
+  };
+  var workBook = new _workbook2.default();
+  worksheets.forEach(function (worksheet) {
+    var name = worksheet.name || 'Sheet';
+    var data = (0, _helpers.buildSheetFromMatrix)(worksheet.data || [], options);
+    workBook.SheetNames.push(name);
+    workBook.Sheets[name] = data;
+  });
+  var excelData = _xlsx2.default.write(workBook, Object.assign({}, defaults, options));
+  return excelData instanceof Buffer ? excelData : new Buffer(excelData, 'binary');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+1. Building a xlsx
+
+```js
+import xlsx from 'node-xlsx';
+// Or var xlsx = require('node-xlsx').default;
+
+const data = [[1, 2, 3], [true, false, null, 'sheetjs'], ['foo', 'bar', new Date('2014-02-19T14
+:30Z'), '0.3'], ['baz', null, 'qux']];
+var buffer = xlsx.<span class="apidocCodeKeywordSpan">build</span>([{name: "mySheetName", data: data}]); // Returns a
+buffer
+```
+
+
+### Contributing
+
+Please submit all pull requests the against master branch. If your unit test contains javascript patches or features, you should
+ include relevant unit tests. Thanks!
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-xlsx.parse" id="apidoc.element.node-xlsx.parse">
+        function <span class="apidocSignatureSpan">node-xlsx.</span>parse
+        <span class="apidocSignatureSpan">(mixed)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse(mixed) {
+  var options = arguments.length &gt; 1 &amp;&amp; arguments[1] !== undefined ? arguments[1] : {};
+
+  var workSheet = _xlsx2.default[(0, _helpers.isString)(mixed) ? 'readFile' : 'read'](mixed, options);
+  return Object.keys(workSheet.Sheets).map(function (name) {
+    var sheet = workSheet.Sheets[name];
+    return { name: name, data: _xlsx2.default.utils.sheet_to_json(sheet, { header: 1, raw: true }) };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+1. Parsing a xlsx from file/buffer, outputs an array of worksheets
+
+```js
+import xlsx from 'node-xlsx';
+// Or var xlsx = require('node-xlsx').default;
+
+// Parse a buffer
+const workSheetsFromBuffer = xlsx.<span class="apidocCodeKeywordSpan">parse</span>(fs.readFileSync(`${__dirname}/myFile.xlsx`));
+// Parse a file
+const workSheetsFromFile = xlsx.parse(`${__dirname}/myFile.xlsx`);
+```
+
+1. Building a xlsx
+
+```js
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-xlsx.default" id="apidoc.module.node-xlsx.default">module node-xlsx.default</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-xlsx.default.build" id="apidoc.element.node-xlsx.default.build">
+        function <span class="apidocSignatureSpan">node-xlsx.default.</span>build
+        <span class="apidocSignatureSpan">(worksheets)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function build(worksheets) {
+  var options = arguments.length &gt; 1 &amp;&amp; arguments[1] !== undefined ? arguments[1] : {};
+
+  var defaults = {
+    bookType: 'xlsx',
+    bookSST: false,
+    type: 'binary'
+  };
+  var workBook = new _workbook2.default();
+  worksheets.forEach(function (worksheet) {
+    var name = worksheet.name || 'Sheet';
+    var data = (0, _helpers.buildSheetFromMatrix)(worksheet.data || [], options);
+    workBook.SheetNames.push(name);
+    workBook.Sheets[name] = data;
+  });
+  var excelData = _xlsx2.default.write(workBook, Object.assign({}, defaults, options));
+  return excelData instanceof Buffer ? excelData : new Buffer(excelData, 'binary');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+1. Building a xlsx
+
+```js
+import xlsx from 'node-xlsx';
+// Or var xlsx = require('node-xlsx').default;
+
+const data = [[1, 2, 3], [true, false, null, 'sheetjs'], ['foo', 'bar', new Date('2014-02-19T14
+:30Z'), '0.3'], ['baz', null, 'qux']];
+var buffer = xlsx.<span class="apidocCodeKeywordSpan">build</span>([{name: "mySheetName", data: data}]); // Returns a
+buffer
+```
+
+
+### Contributing
+
+Please submit all pull requests the against master branch. If your unit test contains javascript patches or features, you should
+ include relevant unit tests. Thanks!
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-xlsx.default.parse" id="apidoc.element.node-xlsx.default.parse">
+        function <span class="apidocSignatureSpan">node-xlsx.default.</span>parse
+        <span class="apidocSignatureSpan">(mixed)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse(mixed) {
+  var options = arguments.length &gt; 1 &amp;&amp; arguments[1] !== undefined ? arguments[1] : {};
+
+  var workSheet = _xlsx2.default[(0, _helpers.isString)(mixed) ? 'readFile' : 'read'](mixed, options);
+  return Object.keys(workSheet.Sheets).map(function (name) {
+    var sheet = workSheet.Sheets[name];
+    return { name: name, data: _xlsx2.default.utils.sheet_to_json(sheet, { header: 1, raw: true }) };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+1. Parsing a xlsx from file/buffer, outputs an array of worksheets
+
+```js
+import xlsx from 'node-xlsx';
+// Or var xlsx = require('node-xlsx').default;
+
+// Parse a buffer
+const workSheetsFromBuffer = xlsx.<span class="apidocCodeKeywordSpan">parse</span>(fs.readFileSync(`${__dirname}/myFile.xlsx`));
+// Parse a file
+const workSheetsFromFile = xlsx.parse(`${__dirname}/myFile.xlsx`);
+```
+
+1. Building a xlsx
+
+```js
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-xlsx.helpers" id="apidoc.module.node-xlsx.helpers">module node-xlsx.helpers</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-xlsx.helpers.buildSheetFromMatrix" id="apidoc.element.node-xlsx.helpers.buildSheetFromMatrix">
+        function <span class="apidocSignatureSpan">node-xlsx.helpers.</span>buildSheetFromMatrix
+        <span class="apidocSignatureSpan">(data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function buildSheetFromMatrix(data) {
+  var options = arguments.length &gt; 1 &amp;&amp; arguments[1] !== undefined ? arguments[1] : {};
+
+  var workSheet = {};
+  var range = { s: { c: 1e7, r: 1e7 }, e: { c: 0, r: 0 } };
+  for (var R = 0; R !== data.length; ++R) {
+    for (var C = 0; C !== data[R].length; ++C) {
+      if (range.s.r &gt; R) range.s.r = R;
+      if (range.s.c &gt; C) range.s.c = C;
+      if (range.e.r &lt; R) range.e.r = R;
+      if (range.e.c &lt; C) range.e.c = C;
+      if (data[R][C] === null) {
+        continue; // eslint-disable-line
+      }
+      var cell = { v: data[R][C] };
+      var cellRef = _xlsx2.default.utils.encode_cell({ c: C, r: R });
+      if (isNumber(cell.v)) {
+        cell.t = 'n';
+      } else if (isBoolean(cell.v)) {
+        cell.t = 'b';
+      } else if (cell.v instanceof Date) {
+        cell.t = 'n';
+        cell.v = buildExcelDate(cell.v);
+        cell.z = _xlsx2.default.SSF._table[14]; // eslint-disable-line no-underscore-dangle
+      } else {
+        cell.t = 's';
+      }
+      workSheet[cellRef] = cell;
+    }
+  }
+  if (range.s.c &lt; 1e7) {
+    workSheet['!ref'] = _xlsx2.default.utils.encode_range(range);
+  }
+  if (options['!cols']) {
+    workSheet['!cols'] = options['!cols'];
+  }
+  if (options['!merges']) {
+    workSheet['!merges'] = options['!merges'];
+  }
+  return workSheet;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-xlsx.helpers.isBoolean" id="apidoc.element.node-xlsx.helpers.isBoolean">
+        function <span class="apidocSignatureSpan">node-xlsx.helpers.</span>isBoolean
+        <span class="apidocSignatureSpan">(maybeBoolean)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function isBoolean(maybeBoolean) {
+  return typeof maybeBoolean === 'boolean';
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-xlsx.helpers.isNumber" id="apidoc.element.node-xlsx.helpers.isNumber">
+        function <span class="apidocSignatureSpan">node-xlsx.helpers.</span>isNumber
+        <span class="apidocSignatureSpan">(maybeNumber)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function isNumber(maybeNumber) {
+  return typeof maybeNumber === 'number';
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-xlsx.helpers.isString" id="apidoc.element.node-xlsx.helpers.isString">
+        function <span class="apidocSignatureSpan">node-xlsx.helpers.</span>isString
+        <span class="apidocSignatureSpan">(maybeString)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function isString(maybeString) {
+  return typeof maybeString === 'string';
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-xlsx.workbook" id="apidoc.module.node-xlsx.workbook">module node-xlsx.workbook</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-xlsx.workbook.default" id="apidoc.element.node-xlsx.workbook.default">
+        function <span class="apidocSignatureSpan">node-xlsx.workbook.</span>default
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Workbook() {
+  _classCallCheck(this, Workbook);
+
+  this.SheetNames = [];
+  this.Sheets = {};
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
