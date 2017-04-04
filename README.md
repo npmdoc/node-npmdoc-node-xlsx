@@ -3,7 +3,7 @@
 
 [![NPM](https://nodei.co/npm/node-xlsx.png?downloads=true)](https://www.npmjs.com/package/node-xlsx)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-node-xlsx/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-node-xlsx_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-node-xlsx/build..beta..travis-ci.org/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-node-xlsx/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-node-xlsx_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-node-xlsx/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-node-xlsx/build/screenCapture.npmPackageListing.svg)
 
