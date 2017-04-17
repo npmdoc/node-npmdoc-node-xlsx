@@ -99,6 +99,19 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-xlsx.build">module node-xlsx.build</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-xlsx.build.build">
+            function <span class="apidocSignatureSpan">node-xlsx.</span>build
+            <span class="apidocSignatureSpan">(worksheets)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
     <li class="apidocModuleLi"><a href="#apidoc.module.node-xlsx.default">module node-xlsx.default</a><ol>
 
         <li>
@@ -155,6 +168,19 @@
             <a class="apidocElementLiA" href="#apidoc.element.node-xlsx.helpers.isString">
             function <span class="apidocSignatureSpan">node-xlsx.helpers.</span>isString
             <span class="apidocSignatureSpan">(maybeString)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-xlsx.parse">module node-xlsx.parse</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-xlsx.parse.parse">
+            function <span class="apidocSignatureSpan">node-xlsx.</span>parse
+            <span class="apidocSignatureSpan">(mixed)</span>
             </a>
 
         </li>
@@ -268,6 +294,59 @@ const workSheetsFromFile = xlsx.parse(`${__dirname}/myFile.xlsx`);
 
 
 
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-xlsx.build" id="apidoc.module.node-xlsx.build">module node-xlsx.build</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-xlsx.build.build" id="apidoc.element.node-xlsx.build.build">
+        function <span class="apidocSignatureSpan">node-xlsx.</span>build
+        <span class="apidocSignatureSpan">(worksheets)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function build(worksheets) {
+  var options = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+  var defaults = {
+    bookType: &#x27;xlsx&#x27;,
+    bookSST: false,
+    type: &#x27;binary&#x27;
+  };
+  var workBook = new _workbook2.default();
+  worksheets.forEach(function (worksheet) {
+    var name = worksheet.name || &#x27;Sheet&#x27;;
+    var data = (0, _helpers.buildSheetFromMatrix)(worksheet.data || [], options);
+    workBook.SheetNames.push(name);
+    workBook.Sheets[name] = data;
+  });
+  var excelData = _xlsx2.default.write(workBook, Object.assign({}, defaults, options));
+  return excelData instanceof Buffer ? excelData : new Buffer(excelData, &#x27;binary&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+1. Building a xlsx
+
+```js
+import xlsx from &#x27;node-xlsx&#x27;;
+// Or var xlsx = require(&#x27;node-xlsx&#x27;).default;
+
+const data = [[1, 2, 3], [true, false, null, &#x27;sheetjs&#x27;], [&#x27;foo&#x27;, &#x27;bar&#x27;, new Date(&#x27;2014-02-19T14
+:30Z&#x27;), &#x27;0.3&#x27;], [&#x27;baz&#x27;, null, &#x27;qux&#x27;]];
+var buffer = xlsx.<span class="apidocCodeKeywordSpan">build</span>([{name: &#x22;mySheetName&#x22;, data: data}]); // Returns a
+buffer
+```
+
+
+### Contributing
+
+Please submit all pull requests the against master branch. If your unit test contains javascript patches or features, you should
+ include relevant unit tests. Thanks!
+...</pre></li>
+    </ul>
 
 
 </div>
@@ -460,6 +539,48 @@ const workSheetsFromFile = xlsx.parse(`${__dirname}/myFile.xlsx`);
   return typeof maybeString === &#x27;string&#x27;;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-xlsx.parse" id="apidoc.module.node-xlsx.parse">module node-xlsx.parse</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-xlsx.parse.parse" id="apidoc.element.node-xlsx.parse.parse">
+        function <span class="apidocSignatureSpan">node-xlsx.</span>parse
+        <span class="apidocSignatureSpan">(mixed)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse(mixed) {
+  var options = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+  var workSheet = _xlsx2.default[(0, _helpers.isString)(mixed) ? &#x27;readFile&#x27; : &#x27;read&#x27;](mixed, options);
+  return Object.keys(workSheet.Sheets).map(function (name) {
+    var sheet = workSheet.Sheets[name];
+    return { name: name, data: _xlsx2.default.utils.sheet_to_json(sheet, { header: 1, raw: true }) };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+1. Parsing a xlsx from file/buffer, outputs an array of worksheets
+
+```js
+import xlsx from &#x27;node-xlsx&#x27;;
+// Or var xlsx = require(&#x27;node-xlsx&#x27;).default;
+
+// Parse a buffer
+const workSheetsFromBuffer = xlsx.<span class="apidocCodeKeywordSpan">parse</span>(fs.readFileSync(`${__dirname}/myFile.xlsx`));
+// Parse a file
+const workSheetsFromFile = xlsx.parse(`${__dirname}/myFile.xlsx`);
+```
+
+1. Building a xlsx
+
+```js
+...</pre></li>
     </ul>
 
 
