@@ -1,4 +1,7 @@
-# api documentation for  [node-xlsx (v0.7.4)](https://github.com/mgcrea/node-xlsx#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-node-xlsx.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-node-xlsx) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-node-xlsx.svg)](https://travis-ci.org/npmdoc/node-npmdoc-node-xlsx)
+# npmdoc-node-xlsx
+
+#### basic api documentation for  [node-xlsx (v0.7.4)](https://github.com/mgcrea/node-xlsx#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-node-xlsx.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-node-xlsx) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-node-xlsx.svg)](https://travis-ci.org/npmdoc/node-npmdoc-node-xlsx)
+
 #### NodeJS Excel files parser & builder
 
 [![NPM](https://nodei.co/npm/node-xlsx.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/node-xlsx)
@@ -83,7 +86,8 @@
         "test:coverage": "nyc --reporter=lcov npm test -- --reporter dot && nyc report",
         "test:watch": "npm run test -- --watch"
     },
-    "version": "0.7.4"
+    "version": "0.7.4",
+    "bin": {}
 }
 ```
 
